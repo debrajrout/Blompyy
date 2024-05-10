@@ -58,7 +58,7 @@ export default async function AccountPage({ searchParams }) {
           <DrawerTrigger>
             <div className=" flex-row-1 mt-4 flex w-full  gap-2 rounded-sm bg-secondary px-6 py-2 outline-double outline-offset-2 outline-sky-300">
               <span className="">Procide</span>
-              <FaArrowRightLong className="mt-[4px]  " />
+              <FaArrowRightLong className="mt-[3px]  " />
             </div>
           </DrawerTrigger>
           <DrawerContent>
