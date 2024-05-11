@@ -118,7 +118,11 @@ export default function PageButtonForm({ user, page }) {
                   className="w-1/2 rounded-md px-2 py-1 shadow-sm hover:shadow-black/50"
                   placeholder={b.placeholder}
                   name={b.key}
-                  defaultValue={page.buttons[b.key]}
+                  defaultValue={
+                    page.buttons && page.buttons[b.key]
+                      ? page.buttons[b.key]
+                      : ""
+                  }
                   type="text"
                   style={{ marginBottom: "0" }}
                 />

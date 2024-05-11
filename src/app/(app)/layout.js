@@ -8,6 +8,8 @@ import Image from "next/image";
 import AppSidebar from "@/components/app-sidebar";
 import mongoose from "mongoose";
 import { Page } from "@/models/page";
+import { GiLinkedRings } from "react-icons/gi";
+import Link from "next/link";
 // import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -31,7 +33,7 @@ export default async function AppLayout({ children }) {
         <main className="flex min-h-screen">
           <aside className="fixed -left-48 bottom-0 top-0 z-20 h-[1200px]  w-48 bg-gray-300 p-4 pt-6  shadow-lg shadow-black  transition-all md:static">
             <div className="sticky top-0 pt-2">
-              <div className="mx-auto aspect-square w-24 overflow-hidden rounded-full">
+              <div className="mx-auto aspect-square w-24 overflow-hidden rounded-full bg-slate-400">
                 <Image
                   src={session.user.image}
                   width={256}
@@ -40,10 +42,15 @@ export default async function AppLayout({ children }) {
                 />
               </div>
               {page && (
-                <div className="mt-4">
-                  <h1 className="text-2xl font-bold">{page.displayName}</h1>
-                  <p className="text-sm">{page.bio}</p>
-                </div>
+                <Link
+                  href={"/" + page.uri}
+                  target="_blank"
+                  className="mt-2 flex items-center justify-center gap-1  text-center"
+                >
+                  <GiLinkedRings className="h-6 w-6 text-blue-500" />
+                  <span></span>
+                  <span>{page.uri}</span>
+                </Link>
               )}
               <AppSidebar />
             </div>
@@ -52,7 +59,6 @@ export default async function AppLayout({ children }) {
             <div className="m-4 bg-secondary p-4 shadow">{children}</div>
           </div>
         </main>
-
         <Toaster position="bottom-right" theme="light" richColors />
       </body>
     </html>
